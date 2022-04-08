@@ -14,18 +14,19 @@
     
            <div class="form-outline mb-4">    
                      <label class="form-label">Admin</label>
-                @Html.TextBox("Name")
-           </div>
+                <div class="">@Html.TextBoxFor(a => a.Name, new { @class = "form-control", type="text" })</div>
+            </div>
 
               <!-- Password input -->
            <div class="form-outline mb-4"> 
-                      <label class="form-label" name="password" for="form2Example2">Password</label>
-                @Html.TextBox("Password")
+                <label class="form-label" name="password" for="form2Example2">Password</label>
+             <div class="c">
+                 @Html.TextBoxFor(a => a.Password, new { @class = "form-control", type="Password"})
+             </div>
            </div>
            <div style="text-align:end; ">
                <input type="submit" class="btn btn-primary"/>
            </div>
    </form>
-
 </div>
 
