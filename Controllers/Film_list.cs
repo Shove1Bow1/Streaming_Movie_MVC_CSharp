@@ -14,5 +14,10 @@ namespace Streaming_Video_MVC.Controllers
             
             return View();
         }
+        public IActionResult add_film()
+        {
+
+            return View();
+        }
     }
 }
