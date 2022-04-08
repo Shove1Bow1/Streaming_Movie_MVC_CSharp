@@ -5,29 +5,29 @@ namespace Streaming_Video_MVC.Controllers
     public class AdminController : Controller
     {    
         private webnangcaoContext webnangcaoContext=new webnangcaoContext();
-        public IActionResult login()
+        public ActionResult Index()
         {
-            return View("Login");
+            return View();
         }
     
         [HttpPost]
-        public ActionResult Index([Bind("name,password")] Admin admin)
+        public ActionResult Index(string Name,string Password)
         {
-            try
+            if (Name != null && Password != null)
             {
-                if (webnangcaoContext.Admins.Where(s => s.Name.Equals(admin.Name) && s.Password.Equals(admin.Password)).ToList().Count > 0)
-                {
-                    return View("Index/Hello");
-                }
-
+               var data=webnangcaoContext.Admins.Where(s => s.Name.Equals(Name)&& s.Password.Equals(Password)).ToList();
+               if (data.Count > 0)
+               {
+                   return View("Hello");
+               }
             }
-            catch (Exception ex)
-            {
-                throw new Exception();
-            }
-            return View("Login");
+           return View();
         }
         public IActionResult Hello()
+        {
+            return View();
+        }
+        public IActionResult login()
         {
             return View();
         }
