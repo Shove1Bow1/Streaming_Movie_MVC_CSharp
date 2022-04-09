@@ -41,33 +41,32 @@
     </style>
 </head>
 <body>  
-    <header style="width:100%; text-align:end">
+    <!--header-->
         <nav class="navbar-expand-sm navbar-light bg-white" style="width:100%; text-align:end">
             <div class="container-fluid" style="text-align:end">
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" style="text-align:end">
-                     <a class="nav-link text-dark" asp-area="" asp-controller="Film_list" asp-action="Index">Log out</a>
+                     <a class="nav-link text-dark log_out" asp-area="" asp-controller="Admin" asp-action="DeleteSession" >Log out</a>
                 </div>
             </div>
          </nav>
-    </header>
-    <div class="container">
+     <!--header-->
+      <div class="container">
          <!-- Sidebar -->
-      
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white" style="margin-top:2%">
             <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3 mt-4">
-            <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-              ><i class="fas fa-lock fa-fw me-3"></i><span>User Acount</span></a
-            >
-            <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-              ><i class="fas fa-chart-line fa-fw me-3"></i><span>Directors</span></a
-            >
-            <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-              <i class="fas fa-chart-pie fa-fw me-3"></i><span>Actors</span>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-              ><i class="fas fa-chart-bar fa-fw me-3"></i><span>Films</span>
-              </a>
+                <a href="#" class="list-group-item list-group-item-action py-2 ripple"
+                  ><i class="fas fa-chart-line fa-fw me-3"></i><span>Directors</span>
+                  </a>
+                <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                  <i class="fas fa-chart-pie fa-fw me-3"></i><span>Actors</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action py-2 ripple"
+                  ><i class="fas fa-chart-bar fa-fw me-3"></i><span>Films</span>
+                  </a>
+                <a href="#" class="list-group-item list-group-item-action py-2 ripple"
+                  ><i class="fas fa-chart-bar fa-fw me-3"></i><span>Genres</span>
+                  </a>
           </div>
         </div>
       </nav>

@@ -27,6 +27,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/College_File/Web_Advanced/LT/Streaming_Movie_MVC_CSharp/Views/Admin/NeedToLogIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTmVlZFRvTG9nSW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/College_File/Web_Advanced/LT/Streaming_Movie_MVC_CSharp/Views/Film_list/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbV9saXN0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
