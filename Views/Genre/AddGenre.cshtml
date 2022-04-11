@@ -1,0 +1,36 @@
+﻿@model Streaming_Video_MVC.Models.Gerne
+
+@{
+    ViewData["Title"] = "AddGenre";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h1>AddGenre</h1>
+
+<h4>Gerne</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddGenre">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" ></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-top:20px">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Genre</a>
+</div>
+

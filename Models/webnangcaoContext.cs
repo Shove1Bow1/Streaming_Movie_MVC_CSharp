@@ -266,6 +266,10 @@ namespace Streaming_Video_MVC.Models
                     .HasColumnType("text")
                     .HasColumnName("DESCRIPTION");
 
+                entity.Property(e => e.IsDeleted)
+                    .HasColumnType("bit")
+                    .HasColumnName("Status_Delete");
+
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
                     .IsUnicode(false)

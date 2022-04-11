@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = F:\College_File\Web_Advanced\LT\Streaming_Movie_MVC_CSharp
 build_property._RazorSourceGeneratorDebug = 
 
+[F:/College_File/Web_Advanced/LT/Streaming_Movie_MVC_CSharp/Views/Admin/Actors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWN0b3JzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/College_File/Web_Advanced/LT/Streaming_Movie_MVC_CSharp/Views/Admin/Hello.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSGVsbG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -23,16 +27,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/College_File/Web_Advanced/LT/Streaming_Movie_MVC_CSharp/Views/Admin/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTG9naW4uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[F:/College_File/Web_Advanced/LT/Streaming_Movie_MVC_CSharp/Views/Admin/NeedToLogIn.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTmVlZFRvTG9nSW4uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [F:/College_File/Web_Advanced/LT/Streaming_Movie_MVC_CSharp/Views/Film_list/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbV9saXN0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/College_File/Web_Advanced/LT/Streaming_Movie_MVC_CSharp/Views/Genre/AddGenre.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcQWRkR2VucmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/College_File/Web_Advanced/LT/Streaming_Movie_MVC_CSharp/Views/Genre/Genre.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcR2VucmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/College_File/Web_Advanced/LT/Streaming_Movie_MVC_CSharp/Views/Genre/GenreEditor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcR2VucmVFZGl0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/College_File/Web_Advanced/LT/Streaming_Movie_MVC_CSharp/Views/Genre/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/College_File/Web_Advanced/LT/Streaming_Movie_MVC_CSharp/Views/Home/Index.cshtml]
@@ -45,6 +57,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [F:/College_File/Web_Advanced/LT/Streaming_Movie_MVC_CSharp/Views/Shared/Admin_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEFkbWluX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/College_File/Web_Advanced/LT/Streaming_Movie_MVC_CSharp/Views/Shared/Empty_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVtcHR5X0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/College_File/Web_Advanced/LT/Streaming_Movie_MVC_CSharp/Views/Shared/Error.cshtml]
