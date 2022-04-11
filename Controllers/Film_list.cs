@@ -9,6 +9,7 @@ namespace Streaming_Video_MVC.Controllers
             using (var context = new webnangcaoContext())
             {
               var blogs = context.Films.ToList();
+                
                 return View(blogs);
             }
             
@@ -16,7 +17,6 @@ namespace Streaming_Video_MVC.Controllers
         }
         public IActionResult add_film()
         {
-
             return View();
         }
     }

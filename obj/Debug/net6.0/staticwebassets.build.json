@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uYOOG1upxXKorGJhO1CnhYlSBUNiuMTnKjmW1UFziC0=",
+  "Hash": "dhj9cV3AffNWKMUEDDEc1NtyJ4EyZOda7HaR63WBC/4=",
   "Source": "Streaming_Video_MVC",
   "BasePath": "_content/Streaming_Video_MVC",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "G:\\Project\\ASP\\Streaming_Movie_MVC_CSharp\\wwwroot\\img\\login.png",
+      "SourceId": "Streaming_Video_MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Project\\ASP\\Streaming_Movie_MVC_CSharp\\wwwroot\\",
+      "BasePath": "_content/Streaming_Video_MVC",
+      "RelativePath": "img/login.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\login.png"
     },
     {
       "Identity": "G:\\Project\\ASP\\Streaming_Movie_MVC_CSharp\\wwwroot\\js\\site.js",

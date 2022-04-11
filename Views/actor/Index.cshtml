@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Streaming_Video_MVC.Models.Actor>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<script type = "text/javascript">
+        function Confirm() {
+            var confirm_value = document.createElement("INPUT");
+            confirm_value.type = "hidden";
+            confirm_value.name = "confirm_value";
+            if (confirm("Do you want to delete actor?")) {
+                confirm_value.value = "Yes";
+            } else {
+                confirm_value.value = "No";
+            }
+            document.forms[0].appendChild(confirm_value);
+        }
+    </script>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameActor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                Image
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameActor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <img src="@item.UrlImg" height="100"/>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdActor">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdActor"  onclick={Confirm()}>Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,32 @@
+﻿@model Streaming_Video_MVC.Models.Admin
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Login</h2>
+<div style="width: 50%; margin-left:25%">
+   <form method="post" action="" style="border:2px solid; box-shadow:2px 2px 3px black; width:100%; height:100%; padding:5px">
+   
+            <div style="text-align:center; ">
+                      <img src="./img/login.png" />
+                  </div>
+    
+           <div class="form-outline mb-4">    
+                     <label class="form-label">Admin</label>
+                <div class="">@Html.TextBoxFor(a => a.Name, new { @class = "form-control", type="text" })</div>
+            </div>
+
+              <!-- Password input -->
+           <div class="form-outline mb-4"> 
+                <label class="form-label" name="password" for="form2Example2">Password</label>
+             <div class="c">
+                 @Html.TextBoxFor(a => a.Password, new { @class = "form-control", type="Password"})
+             </div>
+           </div>
+           <div style="text-align:end; ">
+               <input type="submit" class="btn btn-primary"/>
+           </div>
+   </form>
+</div>
+

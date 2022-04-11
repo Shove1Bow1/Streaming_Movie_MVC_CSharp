@@ -5,6 +5,7 @@ namespace Streaming_Video_MVC.Models
 {
     public partial class Actor
     {
+
         public string IdActor { get; set; } = null!;
         public string? NameActor { get; set; }
         public string? Description { get; set; }
