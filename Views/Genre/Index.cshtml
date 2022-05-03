@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Streaming_Video_MVC.Models.Gerne>
+@using Streaming_Video_MVC.Models;
+@{
+    ViewData["Title"] = "Genre";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+    int i = 1;
+    string getId = "";
+    string getName = "";
+    string getDescription = "";
+}
+
+<h1>Genre</h1>
+<button>@Html.ActionLink("CreateNew","AddGenre")</button>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <table class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%" id="rooms">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Genre Name</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    @if (item.IsDeleted == false)
+                    {
+                        <tr>
+                            <td>
+                                @i
+                            </td>
+                            @{
+                                i += 1;
+                            }
+                            <td>
+                                @Html.DisplayFor(modelItem=>item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem=>item.Description)
+                            </td>
+                            <td>
+                                <button class="EditPopUp" asp-action="GenreEditor"><span>@Html.ActionLink("Edit","GenreEditor",new{getId=item.IdGer})</span></button>
+                                <button class="Something" asp-action="GenreDelete"><span>@Html.ActionLink("Delete","GenreDelete",new{getId=item.IdGer})</span></button>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

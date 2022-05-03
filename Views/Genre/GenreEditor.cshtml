@@ -1,0 +1,49 @@
+﻿@model Streaming_Video_MVC.Models.Gerne
+
+@{
+    ViewData["Title"] = "GenreEditor"; 
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+<div style="width:50%;height:30%; margin-left:25%">
+    <form method="post" action="GenreEditor" style="width:100%;height:100%;">
+        <div class="form-outline mb-4" style="padding-left:5%; padding-right:5%">
+            <div class="form-group container" style="margin-bottom:2%">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label class="control-label">Genre</label>
+                    </div>
+                    <div class="col-lg-8">
+                        @Html.EditorFor(model=>model.Name,new{})
+                    </div>
+                   
+                    <span class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label class="control-label">Description</label>
+                    </div>
+                    <div class="col-lg-8">
+                        @Html.TextAreaFor(model=>model.Description, new{cols=35,@rows=5})
+                    </div>
+                   
+                    <span class="text-danger"></span>
+                </div>
+              
+            </div>
+            <div id="Position" style="text-align:right">
+                <button type="submit" onclick="history.back()">@Html.ActionLink("Cancel","Index")</button> 
+                <button type="submit" onclick="">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        function returnToGenre(){
+            
+        }
+    </script>
+}
+

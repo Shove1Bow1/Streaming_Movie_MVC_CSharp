@@ -269,12 +269,16 @@ namespace Streaming_Video_MVC.Models
                     .HasColumnType("text")
                     .HasColumnName("DESCRIPTION");
 
+                entity.Property(e => e.IsDeleted)
+                    .HasColumnType("bit")
+                    .HasColumnName("Status_Delete");
+
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("NAME");
 
-                entity.Property(e => e.StatusDelete).HasColumnName("Status_Delete");
+                entity.Property(e => e.IsDeleted).HasColumnName("Status_Delete");
             });
 
             modelBuilder.Entity<GerneFilm>(entity =>

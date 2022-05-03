@@ -5,11 +5,17 @@ using System.Linq;
 namespace Streaming_Video_MVC.Controllers
 {
     public class AdminController : Controller
-    {    
+    {
+        string GenreIDforEdit;
         private webnangcaoContext webnangcaoContext=new webnangcaoContext();
         public ActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetString("AdminId") != null)
+            {
+                return View("Hello");
+            }
+            else
+            return View("Index");
         }
     
         [HttpPost]
@@ -40,16 +46,11 @@ namespace Streaming_Video_MVC.Controllers
             }
             return View();
         }
-        public IActionResult login()
-        {
-            return View();
-        }
         public IActionResult DeleteSession()
         {
             HttpContext.Session.Remove("AdminId");
             HttpContext.Session.Remove("AdminName");
             return RedirectToAction("Index");
         }
-
     }
 }
