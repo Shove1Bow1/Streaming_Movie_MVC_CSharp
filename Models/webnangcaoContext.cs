@@ -15,7 +15,6 @@ namespace Streaming_Video_MVC.Models
             : base(options)
         {
         }
-
         public virtual DbSet<Actor> Actors { get; set; } = null!;
         public virtual DbSet<ActorFilm> ActorFilms { get; set; } = null!;
         public virtual DbSet<Admin> Admins { get; set; } = null!;
@@ -33,9 +32,7 @@ namespace Streaming_Video_MVC.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-               optionsBuilder.UseSqlServer("Server=DESKTOP-FLFGLMO\\SQLEXPRESS;Database=webnangcao;Trusted_Connection=True;");
-               
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-FLFGLMO\\SQLEXPRESS;Initial Catalog=FilmDatabase;Integrated Security=True");
             }
         }
 
@@ -63,7 +60,7 @@ namespace Streaming_Video_MVC.Models
                     .IsUnicode(false)
                     .HasColumnName("NAME_ACTOR");
 
-                entity.Property(e => e.Status).HasColumnName("status");
+                entity.Property(e => e.StatusDelete).HasColumnName("Status_Delete");
 
                 entity.Property(e => e.UrlImg)
                     .HasColumnType("text")
@@ -126,6 +123,8 @@ namespace Streaming_Video_MVC.Models
                     .IsUnicode(false)
                     .HasColumnName("PASSWORD")
                     .IsFixedLength();
+
+                entity.Property(e => e.StatusDelete).HasColumnName("Status_Delete");
             });
 
             modelBuilder.Entity<Director>(entity =>
@@ -136,7 +135,7 @@ namespace Streaming_Video_MVC.Models
                 entity.ToTable("DIRECTOR");
 
                 entity.Property(e => e.Id)
-                    .HasMaxLength(8)
+                    .HasMaxLength(12)
                     .IsUnicode(false)
                     .HasColumnName("ID")
                     .IsFixedLength();
@@ -149,6 +148,8 @@ namespace Streaming_Video_MVC.Models
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("NAME");
+
+                entity.Property(e => e.StatusDelete).HasColumnName("Status_Delete");
 
                 entity.Property(e => e.UrlImg)
                     .HasColumnType("text")
@@ -166,7 +167,7 @@ namespace Streaming_Video_MVC.Models
                 entity.HasIndex(e => e.Id, "RELATIONSHIP_4_FK");
 
                 entity.Property(e => e.Id)
-                    .HasMaxLength(8)
+                    .HasMaxLength(12)
                     .IsUnicode(false)
                     .HasColumnName("ID")
                     .IsFixedLength();
@@ -229,6 +230,8 @@ namespace Streaming_Video_MVC.Models
                     .IsUnicode(false)
                     .HasColumnName("NAME");
 
+                entity.Property(e => e.StatusDelete).HasColumnName("Status_Delete");
+
                 entity.Property(e => e.UrlFilm)
                     .HasColumnType("text")
                     .HasColumnName("URL_FILM");
@@ -270,6 +273,8 @@ namespace Streaming_Video_MVC.Models
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("NAME");
+
+                entity.Property(e => e.StatusDelete).HasColumnName("Status_Delete");
             });
 
             modelBuilder.Entity<GerneFilm>(entity =>
@@ -393,6 +398,8 @@ namespace Streaming_Video_MVC.Models
                     .IsUnicode(false)
                     .HasColumnName("NAME");
 
+                entity.Property(e => e.StatusDelete).HasColumnName("Status_Delete");
+
                 entity.Property(e => e.UrlImg)
                     .HasColumnType("text")
                     .HasColumnName("URL_IMG");
@@ -423,9 +430,12 @@ namespace Streaming_Video_MVC.Models
                     .HasColumnName("PASSWORD")
                     .IsFixedLength();
 
+                entity.Property(e => e.StatusDelete).HasColumnName("Status_Delete");
+
                 entity.HasOne(d => d.IdUserNavigation)
                     .WithMany()
                     .HasForeignKey(d => d.IdUser)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_USER_SEC_RELATIONS_USER");
             });
 

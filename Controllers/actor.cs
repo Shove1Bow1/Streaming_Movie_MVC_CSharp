@@ -8,7 +8,7 @@ namespace Streaming_Video_MVC.Controllers
         {
             using (var context = new webnangcaoContext())
             {
-                var blogs = context.Actors.Where(x => x.Status == true).ToList();
+                var blogs = context.Actors.Where(x => x.StatusDelete == false).ToList();
 
                 return View(blogs);
             }
@@ -23,13 +23,13 @@ namespace Streaming_Video_MVC.Controllers
             using (var context = new webnangcaoContext())
             {
                 var blogs = context.Actors.Where(x => x.IdActor == id).FirstOrDefault();
-                blogs.Status = false;
+                blogs.StatusDelete = true;
                 context.Entry(blogs).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 context.SaveChanges();
-                var blog = context.Actors.Where(x => x.Status == true).ToList();
+                var blog = context.Actors.Where(x => x.StatusDelete == false).ToList();
                 return View("Index",blog);
             }
-            return View();
+         
         }
         public IActionResult Edit(string id)
         {
@@ -53,7 +53,7 @@ namespace Streaming_Video_MVC.Controllers
                 actor.NameActor = NameActor;
                 actor.Description = Description;
                 actor.UrlImg = UrlImg;
-                actor.Status = true;
+                actor.StatusDelete = true;
                 context.Actors.Add(actor);
                 context.SaveChanges();
                 var blogs = context.Actors.ToList();
@@ -73,7 +73,7 @@ namespace Streaming_Video_MVC.Controllers
                 actor.NameActor = NameActor;
                 actor.Description = Description;
                 actor.UrlImg = UrlImg;
-                actor.Status = true;
+                actor.StatusDelete = true;
                 context.Actors.Update(actor);
                 context.SaveChanges();
                 var blogs = context.Actors.ToList();
