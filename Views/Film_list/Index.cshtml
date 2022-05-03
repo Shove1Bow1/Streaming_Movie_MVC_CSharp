@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
 }
 
 <h1>Index</h1>
@@ -13,6 +14,9 @@
     <thead>
         <tr>
             <th>
+                Image
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
@@ -21,27 +25,22 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UrlImg)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UrlFilm)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.YearPublic)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.AgeLimit)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdAdminNavigation)
-            </th>
-            <th></th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
     @foreach (var item in Model) {
         <tr>
+            <td>
+                <img src=@item.UrlImg height=300/>
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -51,9 +50,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UrlImg)
-            </td>
+         
             <td>
                 @Html.DisplayFor(modelItem => item.UrlFilm)
             </td>
@@ -63,9 +60,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.AgeLimit)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdAdminNavigation.IdAdmin)
-            </td>
+          
+       
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdFilm">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.IdFilm">Details</a> |

@@ -9,6 +9,6 @@ namespace Streaming_Video_MVC.Models
         public string? NameActor { get; set; }
         public string? Description { get; set; }
         public string? UrlImg { get; set; }
-        public bool? Status { get; set; }
+        public bool StatusDelete { get; set; }
     }
 }

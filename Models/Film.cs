@@ -14,6 +14,7 @@ namespace Streaming_Video_MVC.Models
         public string? UrlFilm { get; set; }
         public string? YearPublic { get; set; }
         public string? AgeLimit { get; set; }
+        public bool? StatusDelete { get; set; }
 
         public virtual Admin? IdAdminNavigation { get; set; }
     }

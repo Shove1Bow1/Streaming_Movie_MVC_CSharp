@@ -1,37 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Streaming_Video_MVC.Models;
-namespace Streaming_Video_MVC.Controllers
+﻿namespace Streaming_Video_MVC.Models
 {
-    public class Film_list : Controller
+    public class country
     {
-        webnangcaoContext context = new webnangcaoContext();
-        public IActionResult Index()
+        public country(int stt, string? countried)
         {
-             var blogs = context.Films.Where(x=>x.StatusDelete==false).ToList();    
-                return View(blogs);
-      
+            this.stt = stt;
+            this.countried = countried;
         }
-        public IActionResult add_film()
+        public country()
+        {}
+        public List<country> countries()
         {
-            return View();
-        }
-        public IActionResult Add_actor()
-        {
-            return View();
-        }
-        public IActionResult Delete (string id)
-        {
-            var blogs = context.Films.Where(x => x.IdFilm == id).FirstOrDefault();
-            blogs.StatusDelete = true;
-            context.Entry(blogs).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            context.SaveChanges();
-            var blog = context.Films.Where(x => x.StatusDelete == false).ToList();
-            return View("Index", blog);
-    
-        }
-        public IActionResult Create()
-        {
-            ViewBag.IdAdmin = HttpContext.Session.GetString("AdminId");
             List<country> countriess = new List<country>();
             countriess.Add(new country(1, "Afghanistan"));
             countriess.Add(new country(2, "Albania"));
@@ -228,33 +207,10 @@ namespace Streaming_Video_MVC.Controllers
             countriess.Add(new country(193, "Yemen"));
             countriess.Add(new country(194, "Zambia"));
             countriess.Add(new country(195, "Zimbabwe"));
-
-            ViewBag.country = countriess ;
-            return View();
-
+            
+            return countriess;
         }
-        [HttpPost]
-        public IActionResult Create([FromForm] string IdAdmin, [FromForm] string Name, [FromForm] string Country, [FromForm] string Description, [FromForm] string UrlImg, [FromForm] string UrlFilm, [FromForm] string YearPublic, [FromForm] string AgeLimit)
-        {
-            string id = "dsdvds";
-            Film film = new Film();
-            film.IdAdmin = IdAdmin;
-            film.Name = Name;
-            film.IdFilm=id;
-            film.Country = Country;
-            film.Description = Description;
-            film.UrlFilm = UrlFilm;
-            film.YearPublic = YearPublic;
-            film.AgeLimit = AgeLimit;
-            film.UrlImg = UrlImg;
-            film.StatusDelete = false;
-            context.Films.Add(film);
-            var blogs = context.Directors.ToList();
-            ViewBag.film = film;
-            return PartialView();
-
-
-        }
-
+        public int stt { get; set; }
+        public string countried { get; set; }
     }
 }
