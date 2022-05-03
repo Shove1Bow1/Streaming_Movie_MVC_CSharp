@@ -524,3 +524,6 @@ F:\College_File\Web_Advanced\LT\Streaming_Movie_MVC_CSharp\obj\Debug\net6.0\refi
 F:\College_File\Web_Advanced\LT\Streaming_Movie_MVC_CSharp\obj\Debug\net6.0\Streaming_Video_MVC.pdb
 F:\College_File\Web_Advanced\LT\Streaming_Movie_MVC_CSharp\obj\Debug\net6.0\Streaming_Video_MVC.genruntimeconfig.cache
 F:\College_File\Web_Advanced\LT\Streaming_Movie_MVC_CSharp\obj\Debug\net6.0\ref\Streaming_Video_MVC.dll
+F:\College_File\Web_Advanced\LT\Streaming_Movie_MVC_CSharp\bin\Debug\net6.0\Firebase.Auth.dll
+F:\College_File\Web_Advanced\LT\Streaming_Movie_MVC_CSharp\bin\Debug\net6.0\Firebase.Storage.dll
+F:\College_File\Web_Advanced\LT\Streaming_Movie_MVC_CSharp\bin\Debug\net6.0\System.ServiceModel.dll
