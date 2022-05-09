@@ -1,10 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Firebase.Auth;
+using Firebase.Storage;
+using System.Web;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Streaming_Video_MVC.Models;
 namespace Streaming_Video_MVC.Controllers
 {
-    public class Film_list : Controller
+   
+    public class ViewModel
     {
+        public IEnumerable<country> Countries{ get; set; }
+        public IEnumerable<Film> Films { get; set; }
+    }
+    public class Film_list : Controller
+    { string linkImg;
         webnangcaoContext context = new webnangcaoContext();
+        private static string ApiKey = "AIzaSyBnkZPA6HSV7EL2pzjToUIx_kYjeUhjETY";
+        private static string Bucket = "netflix-clone-423a7.appspot.com";
+        private static string AuthEmail = "loser@gmail.com";
+        private static string AuthPassword = "slowly123";
+
         public IActionResult Index()
         {
              var blogs = context.Films.Where(x=>x.StatusDelete==false).ToList();    
@@ -32,6 +49,7 @@ namespace Streaming_Video_MVC.Controllers
         public IActionResult Create()
         {
             ViewBag.IdAdmin = HttpContext.Session.GetString("AdminId");
+            List<Film> films = new List<Film>();
             List<country> countriess = new List<country>();
             countriess.Add(new country(1, "Afghanistan"));
             countriess.Add(new country(2, "Albania"));
@@ -228,33 +246,144 @@ namespace Streaming_Video_MVC.Controllers
             countriess.Add(new country(193, "Yemen"));
             countriess.Add(new country(194, "Zambia"));
             countriess.Add(new country(195, "Zimbabwe"));
-
-            ViewBag.country = countriess ;
-            return View();
+            ViewModel viewModel = new ViewModel();
+            viewModel.Films = films;
+            viewModel.Countries = countriess;
+            return View(countriess);
 
         }
         [HttpPost]
-        public IActionResult Create([FromForm] string IdAdmin, [FromForm] string Name, [FromForm] string Country, [FromForm] string Description, [FromForm] string UrlImg, [FromForm] string UrlFilm, [FromForm] string YearPublic, [FromForm] string AgeLimit)
+        public async Task<ActionResult> Create(string IdAdmin,string Name,string Country, string Description,string YearPublic, string AgeLimit, List<IFormFile> UrlImg,List<IFormFile> UrlFilm)
         {
-            string id = "dsdvds";
+            Console.WriteLine(Name);
+         
+
+            //if (UrlFilm != null)
+            //{
+            //    if (UrlFilm[0].Length > 0)
+            //    {
+            //        string path = Path.Combine("Upload/Films", Name + ".mp4");
+            //        FileStream fs = new FileStream(Path.Combine(path), FileMode.Open);
+            //        await UrlFilm[0].CopyToAsync(fs);
+            //        await Task.Run(() => UploadVideo(fs, Name + ".mp4"));
+            //    }
+            //}
             Film film = new Film();
             film.IdAdmin = IdAdmin;
             film.Name = Name;
-            film.IdFilm=id;
+            film.IdFilm=" ";
             film.Country = Country;
             film.Description = Description;
-            film.UrlFilm = UrlFilm;
             film.YearPublic = YearPublic;
             film.AgeLimit = AgeLimit;
-            film.UrlImg = UrlImg;
             film.StatusDelete = false;
             context.Films.Add(film);
+            context.SaveChanges();   
+            if(UrlImg != null)
+            {
+                FileStream ms;
+                string path = Path.Combine("Upload/Posters", Name + ".jpg");
+                if (UrlImg[0].Length > 0)
+                {
+                    using (FileStream sr = new FileStream(path, FileMode.Create))
+                    {
+                        await UrlImg[0].CopyToAsync(sr);
+                    }
+                    ms = new FileStream(Path.Combine(path), FileMode.Open);
+                    UploadImg(ms, Name + ".jpg", Name);
+                }
+            }
+            if(UrlFilm != null)
+            {
+                FileStream ms;
+                string path = Path.Combine("Upload/Films", Name + ".mp4");
+                if (UrlFilm[0].Length > 0)
+                {
+                    using (FileStream sr = new FileStream(path, FileMode.Create))
+                    {
+                        await UrlFilm[0].CopyToAsync(sr);
+                    }
+                    ms = new FileStream(Path.Combine(path), FileMode.Open);
+                    UploadVideo(ms, Name + ".mp4", Name);
+                }
+            }
             var blogs = context.Directors.ToList();
             ViewBag.film = film;
-            return PartialView();
-
-
+            return View();
         }
+        public async void UploadImg(FileStream result, string fileName,string Name)
+        {
+            string link;
+            var auth = new FirebaseAuthProvider(new FirebaseConfig(ApiKey));
+            var a = await auth.SignInWithEmailAndPasswordAsync(AuthEmail, AuthPassword);
 
+            // you can use CancellationTokenSource to cancel the upload midway
+            var cancellation = new CancellationTokenSource();
+
+            var task = new FirebaseStorage(
+                Bucket,
+                new FirebaseStorageOptions
+                {
+                    AuthTokenAsyncFactory = () => Task.FromResult(a.FirebaseToken),
+                    ThrowOnCancel = true // when you cancel the upload, exception is thrown. By default no exception is thrown
+                        })
+                .Child("Poster")
+                .Child(Name + ".jpg")
+                .PutAsync(result, cancellation.Token);
+
+            task.Progress.ProgressChanged += (s, e) => Console.WriteLine($"Progress: {e.Percentage} %");
+            try
+            {
+                link = await task;
+                var Data = context.Films.Where(s => s.Name == Name).FirstOrDefault();
+                if (Data != null)
+                {
+                    Data.UrlImg = link;
+                    context.Entry(Data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.error = $"Exception was thrown: {ex}";
+            }
+        }
+        public async void UploadVideo(FileStream result, string fileName, string Name)
+        {
+            string link;
+            var auth = new FirebaseAuthProvider(new FirebaseConfig(ApiKey));
+            var a = await auth.SignInWithEmailAndPasswordAsync(AuthEmail, AuthPassword);
+
+            // you can use CancellationTokenSource to cancel the upload midway
+            var cancellation = new CancellationTokenSource();
+
+            var task = new FirebaseStorage(
+                Bucket,
+                new FirebaseStorageOptions
+                {
+                    AuthTokenAsyncFactory = () => Task.FromResult(a.FirebaseToken),
+                    ThrowOnCancel = true // when you cancel the upload, exception is thrown. By default no exception is thrown
+                })
+                .Child("Video")
+                .Child(Name + ".mp4")
+                .PutAsync(result, cancellation.Token);
+
+            task.Progress.ProgressChanged += (s, e) => Console.WriteLine($"Progress: {e.Percentage} %");
+            try
+            {
+                link = await task;
+                var Data = context.Films.Where(s => s.Name == Name).FirstOrDefault();
+                if (Data != null)
+                {
+                    Data.UrlFilm = link;
+                    context.Entry(Data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.error = $"Exception was thrown: {ex}";
+            }
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+
 
 namespace Streaming_Video_MVC.Models
 {
@@ -32,13 +32,9 @@ namespace Streaming_Video_MVC.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-<<<<<<< HEAD
                 //To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 //optionsBuilder.UseSqlServer("Server=DESKTOP-FLFGLMO\\SQLEXPRESS;Database=webnangcao;Trusted_Connection=True;");
-                optionsBuilder.UseSqlServer("Server=DESKTOP-P6811AB\\SQLEXPRESS;Database=FilmDatabase;Trusted_Connection=True;");
-=======
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-FLFGLMO\\SQLEXPRESS;Initial Catalog=FilmDatabase;Integrated Security=True");
->>>>>>> c88df8b283d7c0ce46a4e9aaa3589feb47eccd24
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-P6811AB;Initial Catalog=FilmDatabase;Integrated Security=True");
             }
         }
 
