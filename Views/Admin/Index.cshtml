@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
     Layout="~/Views/Shared/_Layout.cshtml";
 }
-<div style="width: 50%; margin-left:25%; margin-top:20%; margin-bottom:20%">
+<div style="display:flex;margin:auto;padding-top:10%;width:40%">
    <form method="post" action="" style="border:2px solid; box-shadow:2px 2px 3px black; width:100%; height:100%; padding:5px">
    
             <div style="text-align:center; ">
@@ -12,19 +12,19 @@
                   </div>
     
            <div class="form-outline mb-4">    
-                     <label class="form-label">Admin</label>
+                     <label class="form-label" style="font-weight:bold">ADMIN:</label>
                 <div class="">@Html.TextBoxFor(a => a.Name, new { @class = "form-control", type="text" })</div>
             </div>
 
               <!-- Password input -->
            <div class="form-outline mb-4"> 
-                <label class="form-label" name="password" for="form2Example2">Password</label>
+                <label class="form-label" style="font-weight:bold" name="password" for="form2Example2">PASSWORD:</label>
              <div class="">
                  @Html.TextBoxFor(a => a.Password, new { @class = "form-control", type="Password"})
              </div>
            </div>
            <div style="text-align:end; ">
-               <input type="submit" class="btn btn-primary"/>
+               <button type="submit" class="btn btn-dark" style="font-weight:bold">LOGIN</button>
            </div>
    </form>
 </div>
