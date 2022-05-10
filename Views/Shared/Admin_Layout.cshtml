@@ -16,14 +16,11 @@ body {
 
 .sidenav {
   height: 100%;
-  width: 0;
   position: fixed;
+  width:30%;
   z-index: 1;
   top: 0;
   left: 0;
-  border-right:5px;
-  border-color:black;
-  background-color: #111;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -32,28 +29,41 @@ body {
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 25px;
-  color: #818181;
+  font-size: 20px;
+  color: #000;
   display: block;
   transition: 0.3s;
+  font-weight:normal;
 }
 
 .sidenav a:hover {
-  color: #f1f1f1;
+  color: #fff;
   background:black;
 }
 
 .sidenav .closebtn {
   position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+  top: 5px;
+  right: 5px;
+  font-size: 30px;
+  padding-left:5px ;
+  border:2px solid #000;
+  border-radius:5px;
+}
+
+.footer{
+    color: black;
+    font-weight: bold;
+    text-align: center;
 }
 
 #main {
   transition: margin-left .5s;
   padding: 16px;
+}
+
+table, th, td {
+  border: 2px solid black;
 }
 
 /*media screen and (max-height: 450px) {
@@ -80,43 +90,38 @@ openNav()
 </script>
 <body>  
     <!--header-->
-  
-     <!--header-->
-      <div class="container">
-         <!-- Sidebar --><div id="mySidenav" class="sidenav bg-white">
-                   <nav class="navbar-expand-sm navbar-light bg-white" style="width:100%; text-align:end">
-            <div class="container-fluid" style="text-align:end">
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" style="text-align:end">
-                     <a class="nav-link text-dark log_out" asp-area="" asp-controller="Admin" asp-action="DeleteSession" >Log out</a>
+    <!--header-->
+    <div class="container" style="min-height:90vh; display:flex;flex-direction:column">
+         <!-- Sidebar -->
+         <div id="mySidenav" class="sidenav bg-white" style="border:1px solid #000">
+            
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white" style="margin-top:2%;min-height:75vh; display:flex;flex-direction:column">
+                <div class="position-sticky">
+                    <div class="list-group list-group-flush mx-3 mt-4"
+                        <a href="#" class="list-group-item list-group-item-action py-2 ripple" style="font-size:30px;font-weight:bold"><span>Menu</span></a>
+                        <a asp-controller="Film_list" asp-action="Index" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-chart-line fa-fw me-3"></i><span>Film</span></a>
+                        <a asp-controller="Actor" asp-action="Index" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-chart-line fa-fw me-3"></i><span>Actor</span></a>
+                        <a asp-controller="director" asp-action="Index" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-chart-line fa-fw me-3"></i><span>Director</span></a>
+                    </div>
                 </div>
-            </div>
-         </nav>
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white" style="margin-top:2%">
-            <div class="position-sticky">
-                <div class="list-group list-group-flush mx-3 mt-4"
-            <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-              ><i class="fas fa-lock fa-fw me-3"></i><span>Menu</span></a
-            >
-            <a asp-controller="Film_list" asp-action="Index" class="list-group-item list-group-item-action py-2 ripple"
-              ><i class="fas fa-chart-line fa-fw me-3"></i><span>Film</span></a>
-               <a asp-controller="Actor" asp-action="Index" class="list-group-item list-group-item-action py-2 ripple"
-              ><i class="fas fa-chart-line fa-fw me-3"></i><span>Actor</span></a>
-              <a asp-controller="director" asp-action="Index" class="list-group-item list-group-item-action py-2 ripple"
-              ><i class="fas fa-chart-line fa-fw me-3"></i><span>Director</span></a>
-          </div>
+            </nav>
+            <nav class="navbar-expand-sm navbar-light bg-white" style="width:100%; text-align:end;margin-top:auto;left:5px">
+                <div class="container-fluid" style="text-align:end">
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" style="text-align:end">
+                         <a class="nav-link log_out" style="font-size:20px;font-weight:bold;border-radius:5px;border:1px solid #000;padding:8px" asp-area="" asp-controller="Admin" asp-action="DeleteSession" >Log out</a>
+                    </div>
+                </div>
+            </nav>
         </div>
-      </nav>
-      </div>
         <span style="font-size:30px;cursor:pointer" id="open_icon" onclick="openNav()">&#9776;</span>
-    <!-- Sidebar -->
-   
+        <!-- Sidebar -->
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="border-top footer text-muted" style="margin-top:auto">
+        <div class="container footer">
             &copy; 2022 - Streaming_Video_MVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>

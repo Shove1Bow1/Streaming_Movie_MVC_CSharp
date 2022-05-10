@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\College_File\\WNC\\LT\\Streaming_Movie_MVC_CSharp\\Streaming_Video_MVC.csproj": {}
+    "D:\\LTW-NC\\Streaming_Movie_MVC_CSharp\\Streaming_Video_MVC.csproj": {}
   },
   "projects": {
-    "F:\\College_File\\WNC\\LT\\Streaming_Movie_MVC_CSharp\\Streaming_Video_MVC.csproj": {
+    "D:\\LTW-NC\\Streaming_Movie_MVC_CSharp\\Streaming_Video_MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\College_File\\WNC\\LT\\Streaming_Movie_MVC_CSharp\\Streaming_Video_MVC.csproj",
+        "projectUniqueName": "D:\\LTW-NC\\Streaming_Movie_MVC_CSharp\\Streaming_Video_MVC.csproj",
         "projectName": "Streaming_Video_MVC",
-        "projectPath": "F:\\College_File\\WNC\\LT\\Streaming_Movie_MVC_CSharp\\Streaming_Video_MVC.csproj",
-        "packagesPath": "C:\\Users\\Fireb\\.nuget\\packages\\",
-        "outputPath": "F:\\College_File\\WNC\\LT\\Streaming_Movie_MVC_CSharp\\obj\\",
+        "projectPath": "D:\\LTW-NC\\Streaming_Movie_MVC_CSharp\\Streaming_Video_MVC.csproj",
+        "packagesPath": "C:\\Users\\MyComputer\\.nuget\\packages\\",
+        "outputPath": "D:\\LTW-NC\\Streaming_Movie_MVC_CSharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Fireb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MyComputer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

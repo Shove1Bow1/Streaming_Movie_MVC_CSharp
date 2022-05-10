@@ -9,64 +9,64 @@
 <h4>Film</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5" style="margin:auto">
         <form asp-action="Create" asp-controller="Film_list"  enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" name="IdFilm" />
             <div class="form-group">
                 <label class="control-label">Id Admin</label>
                 <input class="form-control" readonly=true value="@ViewBag.IdAdmin">
-                <span name="IdAdmin" class="text-danger"></span>
+                <span name="IdAdmin" class="text-danger"><br /></span>
             </div>
             <div class="form-group">
                 <label name="Name" class="control-label">Name</label>
                 <input name="Name" class="form-control"/>
-                <span name="Name" class="text-danger"></span>
+                <span name="Name" class="text-danger"><br /></span>
             </div>
             <div class="form-group">
                 <label name="Country" class="control-label">Country</label>
                 <select name="Country" class="form-control" value="VietNam">
                 </select>
-                <span name="Country" class="text-danger"></span>
+                <span name="Country" class="text-danger"><br /></span>
             </div>
             <div class="form-group">
                 <label name="Description" class="control-label">Description</label>
                 <input name="Description" class="form-control" />
-                <span name="Description" class="text-danger"></span>
+                <span name="Description" class="text-danger"><br /></span>
             </div>
             <div class="form-group">
-                <label name="UrlImg" class="control-label"></label>
+                <label name="UrlImg" class="control-label">UrlImg</label>
                 <input name="UrlImg" type="file" accept="image/*" class="form-control" />
-                <span name="UrlImg" class="text-danger"></span>
+                <span name="UrlImg" class="text-danger"><br /></span>
             </div>
             <div class="form-group">
-                <label name="UrlFilm" class="control-label"></label>
+                <label name="UrlFilm" class="control-label">UrlFilm</label>
                 <input name="UrlFilm" type="file" class="form-control" accept="video/mp4,video/x-m4v,video/*"/>
-                <span name="UrlFilm" class="text-danger"></span>
+                <span name="UrlFilm" class="text-danger"><br /></span>
             </div>
             <div class="form-group">
-                <label name="YearPublic" class="control-label"></label>
+                <label name="YearPublic" class="control-label">Year Public</label>
                 <input name="YearPublic" class="form-control" />
-                <span name="YearPublic" class="text-danger"></span>
+                <span name="YearPublic" class="text-danger"><br /></span>
             </div>
             <div class="form-group">
-                <label name="AgeLimit" class="control-label"></label>
+                <label name="AgeLimit" class="control-label">Age Limit</label>
                 <input name="AgeLimit" class="form-control" />
-                <span name="AgeLimit" class="text-danger"></span>
+                <span name="AgeLimit" class="text-danger"><br /></span>
             </div>
             <div class="form-group">
-                <label name="StatusDelete" class="control-label"></label>
+                <label name="StatusDelete" class="control-label">Status Delete</label>
                 <input name="StatusDelete" class="form-control" />
-                <span name="StatusDelete" class="text-danger"></span>
+                <span name="StatusDelete" class="text-danger"><br /></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-dark"/>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="link-dark"> < Back to List</a>
 </div>
 
