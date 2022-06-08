@@ -250,7 +250,6 @@ namespace Streaming_Video_MVC.Controllers
             viewModel.Films = films;
             viewModel.Countries = countriess;
             return View(countriess);
-
         }
         [HttpPost]
         public async Task<ActionResult> Create(string IdAdmin,string Name,string Country, string Description,string YearPublic, string AgeLimit, List<IFormFile> UrlImg,List<IFormFile> UrlFilm)

@@ -59,6 +59,7 @@ namespace Streaming_Video_MVC.Controllers
                 string id = "saa";
                 Actor actor = new Actor();
                 actor.IdActor = id;
+
                 actor.NameActor = NameActor;
                 actor.Description = Description;
                 actor.StatusDelete = false;
@@ -77,27 +78,35 @@ namespace Streaming_Video_MVC.Controllers
                         Upload(ms, NameActor + ".jpg", NameActor);
 
                 }
-                return View("index",blogs);
+                return RedirectToAction("index",blogs);
             }
 
         }
         [HttpPost]
-        public IActionResult UpdateActor([FromForm] string IdActor, [FromForm] string NameActor, [FromForm] string Description, [FromForm] string UrlImg)
+        public async Task<ActionResult> UpdateActor([FromForm] string IdActor, [FromForm] string NameActor, [FromForm] string Description, [FromForm] IFormFile UrlImg)
         {
 
             using (var context = new webnangcaoContext())
             {
-                Actor actor = new Actor();
-                actor.IdActor = IdActor;
-                actor.NameActor = NameActor;
-                actor.Description = Description;
-                actor.UrlImg = UrlImg;
-                actor.StatusDelete = true;
-                context.Actors.Update(actor);
+                Actor actor = new Actor();    
+                var Data = context.Actors.Where(s => s.IdActor == IdActor).FirstOrDefault();
+                Data.NameActor = NameActor;
+                Data.Description = Description;
+                context.Entry(Data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 context.SaveChanges();
+                if (UrlImg != null)
+                {
+                    string path = Path.Combine("Upload/Actor", NameActor + ".jpg");
+                    using (FileStream fs = new FileStream(path, FileMode.Create))
+                    {
+                        await UrlImg.CopyToAsync(fs);
+                    }
+                    FileStream ms = new FileStream(path, FileMode.Open);
+                    Upload(ms, NameActor + ".jpg", NameActor);
+                }
                 var blogs = context.Actors.ToList();
 
-                return View("index", blogs);
+                return RedirectToAction("index", blogs);
             }
 
         }

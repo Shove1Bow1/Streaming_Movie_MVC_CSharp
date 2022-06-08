@@ -58,7 +58,7 @@ namespace Streaming_Video_MVC.Controllers
                 Upload(ms, Name + ".jpg", Name);
             }
             var blogs = context.Directors.ToList();
-            return View("index", blogs);
+            return RedirectToAction("index", blogs);
 
 
         }
@@ -66,13 +66,25 @@ namespace Streaming_Video_MVC.Controllers
         public async Task<ActionResult> Edit([FromForm] string Id,[FromForm] string Name, [FromForm] string Description, [FromForm] IFormFile UrlImg)
         {
             Director director = new Director();
-            director.Name = Name;
-            director.Description = Description;
-            director.StatusDelete = false;
-            context.Directors.Update(director);
+            director.Id = Id;
+            var Data = context.Directors.Where(s => s.Id == Id).FirstOrDefault();
+            Data.Name = Name;
+            Data.Description = Description;
+            context.Entry(Data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             context.SaveChanges();
+            Console.WriteLine(UrlImg);
+            if (UrlImg != null)
+            {
+                string path = Path.Combine("Upload/Director", Name + ".jpg");
+                using (FileStream fs = new FileStream(path, FileMode.Create))
+                {
+                    await UrlImg.CopyToAsync(fs);
+                }
+                FileStream ms = new FileStream(path, FileMode.Open);
+                Upload(ms, Name + ".jpg", Name);
+            }
             var blogs = context.Directors.ToList();
-            return View("index", blogs);    
+            return RedirectToAction("index", blogs);    
         }
         public async void Upload(FileStream result, string NameFile, string Name)
         {
