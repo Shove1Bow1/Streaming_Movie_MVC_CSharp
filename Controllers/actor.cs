@@ -26,6 +26,7 @@ namespace Streaming_Video_MVC.Controllers
         }
         public ActionResult Delete(string id)
         {
+          
             using (var context = new webnangcaoContext())
             {
                 var blogs = context.Actors.Where(x => x.IdActor == id).FirstOrDefault();

@@ -6,11 +6,13 @@ namespace Streaming_Video_MVC.Controllers
 {
     public class AdminController : Controller
     {
+ 
         string GenreIDforEdit;
+            Context context = new Context(new usernotlogin());
         private webnangcaoContext webnangcaoContext=new webnangcaoContext();
         public ActionResult Index()
         {
-            if (HttpContext.Session.GetString("AdminId") != null)
+            if (context.State.id != null)
             {
                 return View("Hello");
             }
@@ -32,6 +34,8 @@ namespace Streaming_Video_MVC.Controllers
                if (data.Count > 0)
                {
                    HttpContext.Session.SetString("AdminId",data[0].IdAdmin);
+                    context.changeState(new userLogin());
+                    context.State.login(data[0].IdAdmin, data[0].Name);
                    HttpContext.Session.SetString("AdminName", data[0].Name);
                    return View("Hello");
                }
@@ -40,10 +44,12 @@ namespace Streaming_Video_MVC.Controllers
         }
         public IActionResult Hello()
         {
-            if (HttpContext.Session.GetString("AdminId") == null && HttpContext.Session.GetString("AdminName")==null)
-            {
-                return View("Index");
-            }
+            //if (httpcontext.session.getstring("adminid") == null && httpcontext.session.getstring("adminname") == null)
+            //{
+            //    return view("index");
+            //}
+            if (context.State.id == null && context.State.name == null)
+                return View("index");
             return View();
         }
         public IActionResult DeleteSession()
